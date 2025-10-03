@@ -213,20 +213,20 @@ import pandas as pd
 from tabulate import tabulate
 import numpy as np
 
-# --- Criar DataFrame a partir do melhor indivíduo ---
+# Criar DataFrame a partir do melhor indivíduo
 cargas = list(CARGAS.keys())                    # ['C1','C2','C3','C4']
 compartimentos = list(COMPARTIMENTOS.keys())    # ['D','C','T']
 
 tabela_melhor = pd.DataFrame(melhor_individuo_geral, index=cargas, columns=compartimentos)
 
-# --- Calcular estatísticas do melhor indivíduo ---
+# alcular estatísticas do melhor indivíduo
 pesos_compartimentos = melhor_individuo_geral.sum(axis=0)
 volumes_compartimentos = np.zeros(3)
 for j in range(3):  # para cada compartimento
     for i, carga in enumerate(CARGAS.values()):
         volumes_compartimentos[j] += melhor_individuo_geral[i,j] * carga['volume']
 
-# --- Criando DataFrame resumido ---
+# Criar DataFrame resumido
 resumo = pd.DataFrame({
     'peso (t)': [f"{pesos_compartimentos[j]:.2f} / {COMPARTIMENTOS[c]['peso']}" 
                  for j, c in enumerate(COMPARTIMENTOS.keys())],
@@ -234,7 +234,7 @@ resumo = pd.DataFrame({
                     for j, c in enumerate(COMPARTIMENTOS.keys())]
 }, index=COMPARTIMENTOS.keys())
 
-# --- Estatísticas gerais ---
+# Estatísticas gerais
 peso_total_ocupado = pesos_compartimentos.sum()
 peso_total_max = sum(comp['peso'] for comp in COMPARTIMENTOS.values())
 volume_total_ocupado = volumes_compartimentos.sum()
@@ -243,7 +243,7 @@ lucro_total = sum(melhor_individuo_geral[i,j] * carga['lucro']
                   for i, carga in enumerate(CARGAS.values()) 
                   for j in range(3))
 
-# --- Impressão final com tabulate ---
+# Impressão final com tabulate
 print("\n####################################################")
 print("\nMelhor indivíduo encontrado: \n(toneladas de cada carga em cada compartimento)\n")
 print(tabulate(tabela_melhor, headers='keys', tablefmt='fancy_grid'))
