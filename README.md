@@ -39,11 +39,7 @@ O problema consiste em distribuir quatro tipos de carga (C1, C2, C3 e C4) em tr�
 
 [https://colab.research.google.com/drive/1A9dn0ORcsN1bkAIGBe9YTje72Ib_ReB6?usp=sharing](https://colab.research.google.com/drive/1A9dn0ORcsN1bkAIGBe9YTje72Ib_ReB6?usp=sharing)
 
-Obs.: demora mais para execução (uns 10 minutos)
-
 ### Por este repositório:
-
-Obs.: demora menos para executar, dependendo da máquina (em testes deu uns 1min40s)
 
 1. Clone o repositório:
 
